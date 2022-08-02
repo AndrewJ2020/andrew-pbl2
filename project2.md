@@ -347,7 +347,7 @@ http://54.226.102.116/todo_list.php
 
 My  PHP environment is ready to connect and interact with my MySQL server.
 
-END OF PROJECT 2
+END PROJECT 2 
 
 
 
