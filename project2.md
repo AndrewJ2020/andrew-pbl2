@@ -255,21 +255,19 @@ in my case
 sudo rm /var/www/projectLEMP/info.php
 
 
-
 ![prj30](https://user-images.githubusercontent.com/110178748/182428623-b95c37fd-cc80-4fb2-aef6-e1e501aaae43.png)
 
 
 
 therefore:
 
-
-
 ![prj31](https://user-images.githubusercontent.com/110178748/182428815-a4411c45-c24d-4ef5-9034-ab70de34aa78.png)
 
 
 
 
-#Step 6: RETRIEVING DATA FROM MYSQL DATABASE WITH PHP (CONTINUED)
+# Step6: RETRIEVING DATA FROM MYSQL DATABASE WITH PHP (CONTINUED)
+
 
 In this step I will create a test database (DB) with simple "To do list" and configure access to it, so the Nginx website
 would be able to query data from the DB and display it.
