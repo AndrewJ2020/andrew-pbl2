@@ -208,20 +208,29 @@ newly configured website.
 
 At this point, my LAMP stack is completely installed and fully operational.
 
-You can test it to validate that Nginx can correctly hand .php files off to your PHP processor.
+I can test it to validate that Nginx can correctly hand .php files off to my PHP processor.
 
-You can do this by creating a test PHP file in your document root. Open a new file called info.php within your document root in your text editor:
- sudo nano /var/www/projectLEMP/info.php
+I can do this by creating a test PHP file in your document root. Open a new file called info.php within your document root in your text editor:
+sudo nano /var/www/projectLEMP/info.php
 
-![prj27](https://user-images.githubusercontent.com/110178748/182427264-195242a0-f615-4abe-b8f0-e459f7996530.png)
 
-Type or paste the following lines into the new file. This is valid PHP code that will return information about your server:
+ ![prj27](https://user-images.githubusercontent.com/110178748/182427264-195242a0-f615-4abe-b8f0-e459f7996530.png)
+
+
+ 
+ Type or paste the following lines into the new file. This is valid PHP code that will return information about your server:
 <?php
 phpinfo();
 
+
+
 ![prj28](https://user-images.githubusercontent.com/110178748/182427450-0fbd8877-4647-4d7f-b3b0-c477f565a6f3.png)
 
+
+
 And When im done editing, save and close the file. I'm using nano, so i  can do so by typing CTRL+X and then y and ENTER to confirm. 
+
+
 
 You can now access this page in your web browser by visiting the domain name or public IP address you’ve set up in your Nginx configuration file, followed by /info.php:
 
@@ -229,7 +238,12 @@ http://`server_domain_or_IP`/info.php
 
 http://54.226.102.116/info.php
 
+
+
 ![prj29](https://user-images.githubusercontent.com/110178748/182427964-f52cc2a9-4171-4708-a678-86f5a4a7be21.png)
+
+
+
 
 After checking the relevant information about my PHP server through that page, I remove the 
 file I created as it contains sensitive information about my PHP environment and my Ubuntu server. I use rm to remove that file:
@@ -240,11 +254,20 @@ in my case
 
 sudo rm /var/www/projectLEMP/info.php
 
+
+
 ![prj30](https://user-images.githubusercontent.com/110178748/182428623-b95c37fd-cc80-4fb2-aef6-e1e501aaae43.png)
+
+
 
 therefore:
 
+
+
 ![prj31](https://user-images.githubusercontent.com/110178748/182428815-a4411c45-c24d-4ef5-9034-ab70de34aa78.png)
+
+
+
 
 #Step 6: RETRIEVING DATA FROM MYSQL DATABASE WITH PHP (CONTINUED)
 
@@ -252,15 +275,27 @@ In this step I will create a test database (DB) with simple "To do list" and con
 would be able to query data from the DB and display it.
 I create a database named example_database and a user named example_user, but I can replace these names with different values.
 
+
+
 First I connect to the MySQL console using the root account with password flag -p : sudo mysql -p
+
+
 
 ![prj32](https://user-images.githubusercontent.com/110178748/182429750-a886f4d9-731c-4515-b43c-ca8e418cb508.png)
 
+
+
 I ceate a new database, run the following command from your MySQL console: mysql> CREATE DATABASE `example_database`;
+
+
 
 ![prj34](https://user-images.githubusercontent.com/110178748/182430327-e0dccdf2-c71f-4714-9b22-5a026470aaf8.png)
 
+
+
 Now I can create a new user and grant him full privileges on the database I have just created.
+
+
 
 The following command creates a new user named example_user, using mysql_native_password 
 as default authentication method. I am defining this user’s password as password, but you 
@@ -268,20 +303,34 @@ should replace this value with a secure password of your own choosing. **i decid
 
 mysql>  CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY 'PassWord.1';
 
+
+
 ![prj36](https://user-images.githubusercontent.com/110178748/182431167-e294d144-bf39-4fad-82e5-f9203109ff04.png)
 
+
+
 Now we need to give this user permission over the example_database database:
+
+
 
 mysql> GRANT ALL ON example_database.* TO 'example_user'@'%';
 
 ![prj38](https://user-images.githubusercontent.com/110178748/182432149-85d8df04-c6f5-44b7-a11a-f871357672ca.png)
 
 
+
+
 I can test if the new user has the proper permissions by logging in to the MySQL console again, this time using the custom user credentials:
+
+
 
 After logging in to the MySQL console, confirm that I have access to the example_database database:
 
+
+
 ![prj39](https://user-images.githubusercontent.com/110178748/182432725-964466b8-2823-42cc-b409-ce8a84657383.png)
+
+
 
 Next, I create a test table named todo_list. From the MySQL console, I run the following statement:
 CREATE TABLE example_database.todo_list (
@@ -290,10 +339,13 @@ mysql>     content VARCHAR(255),
 mysql>     PRIMARY KEY(item_id)
 mysql> );
 
+
+
 ![prk40](https://user-images.githubusercontent.com/110178748/182433386-8c7b099a-487b-448a-9021-f3aa7941563d.png)
 
 
 I Insert a few rows of content in the test table. I  repeat the next command a few times, using different VALUES:
+
 
 mysql> INSERT INTO example_database.todo_list (content) VALUES ("My first important item");  
 
@@ -306,12 +358,17 @@ mysql> INSERT INTO example_database.todo_list (content) VALUES ("My first import
 To confirm that the data was successfully saved to my  table, I  run:
 mysql>  SELECT * FROM example_database.todo_list;
 
+
 ![prj42](https://user-images.githubusercontent.com/110178748/182434085-5d2f9921-9601-4362-953e-9c5ec446d47f.png)
+
+
 
 Now I can create a PHP script that will connect to MySQL and query for my content. 
 I Create a new PHP file in my custom web root directory using a preferred editor. I will  use **vi**  for that:
 
 nano /var/www/projectLEMP/todo_list.php
+
+
 
 I will then Copy this content into my todo_list.php script:
 
@@ -333,6 +390,8 @@ try {
     die();
 }
 
+
+
 ![prj44](https://user-images.githubusercontent.com/110178748/182435282-949d0c8e-44da-4418-a786-cfe8a8c55178.png)
 
 
@@ -343,7 +402,11 @@ http://<Public_domain_or_IP>/todo_list.php
 in my case
 http://54.226.102.116/todo_list.php
 
+
+
 ![prj46](https://user-images.githubusercontent.com/110178748/182435598-151505e3-f84e-4bdc-ba9a-db2d3aed5d38.png)
+
+
 
 My  PHP environment is ready to connect and interact with my MySQL server.
 
