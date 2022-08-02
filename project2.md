@@ -204,7 +204,7 @@ newly configured website.
 
 # Step 5: Testing **PHP** with **NGINX** 
  
- My LEMP stack should now be completely set up.
+##My LEMP stack should now be completely set up##
 
 At this point, my LAMP stack is completely installed and fully operational.
 
@@ -214,30 +214,24 @@ I can do this by creating a test PHP file in your document root. Open a new file
 sudo nano /var/www/projectLEMP/info.php
 
 
- ![prj27](https://user-images.githubusercontent.com/110178748/182427264-195242a0-f615-4abe-b8f0-e459f7996530.png)
+![prj27](https://user-images.githubusercontent.com/110178748/182427264-195242a0-f615-4abe-b8f0-e459f7996530.png)
 
 
  
- Type or paste the following lines into the new file. This is valid PHP code that will return information about your server:
+I Type or paste the following lines into the new file. This is valid PHP code that will return information about your server:
 <?php
 phpinfo();
 
 
-
 ![prj28](https://user-images.githubusercontent.com/110178748/182427450-0fbd8877-4647-4d7f-b3b0-c477f565a6f3.png)
 
-
-
 And When im done editing, save and close the file. I'm using nano, so i  can do so by typing CTRL+X and then y and ENTER to confirm. 
-
-
 
 You can now access this page in your web browser by visiting the domain name or public IP address you’ve set up in your Nginx configuration file, followed by /info.php:
 
 http://`server_domain_or_IP`/info.php
 
 http://54.226.102.116/info.php
-
 
 
 ![prj29](https://user-images.githubusercontent.com/110178748/182427964-f52cc2a9-4171-4708-a678-86f5a4a7be21.png)
